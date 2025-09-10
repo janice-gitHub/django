@@ -3,6 +3,20 @@ from django.http import HttpResponse
 import json
 from .models import Todo
 
+# 新增todo.html
+# 將todo傳出到{{todo}}
+
+
+def view_todo(request, id):
+    todo = None
+    try:
+        todo = Todo.objects.get(id=id)
+
+    except Exception as e:
+        print(e)
+
+    return render(request, "todo/view-todo.html", {"todo": todo})
+
 
 def todolist(request):
     todos = Todo.objects.all()

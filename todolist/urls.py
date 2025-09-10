@@ -21,7 +21,8 @@ from todo import views
 
 
 urlpatterns = [
-    path("books/", views.books),
-    path("", views.todolist),
+    path("todo/<int:id>", views.view_todo, name="viewtodo"),
+    path("books/", views.books, name="books"),
+    path("", views.todolist, name="booklist"),
     path("admin/", admin.site.urls),
 ]
